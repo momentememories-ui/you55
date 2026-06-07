@@ -8,9 +8,9 @@
     <style>
         body {
             margin: 0; padding: 0;
-            /* ปรับพื้นหลังเป็นไฟล์ photo11.jpg ตามบรีฟ */
-            background: url('photo11.jpg') no-repeat center center fixed;
-            background-size: cover;
+            /* แก้ไข: เปลี่ยนไฟล์พื้นหลังเป็น photo11.png และตั้งค่า contain ไม่ให้ภาพโดนซูม */
+            background: #fff0f5 url('photo11.png') no-repeat center center fixed;
+            background-size: contain;
             font-family: 'Prompt', sans-serif;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             height: 100vh; overflow: hidden;
@@ -50,7 +50,6 @@
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* เพิ่มแอนิเมชันขยับดึงดูดสายตาให้กับช่อดอกไม้ */
         .attract-bounce {
             animation: attractWiggle 1.2s ease-in-out infinite alternate !important;
         }
@@ -89,7 +88,6 @@
             cursor: pointer; pointer-events: auto;
             object-fit: cover;
             border-radius: 4px;
-            /* ปรับให้รูปภาพสุ่มเอียงเล็กน้อยและขยับเด้งเบา ๆ แบบไม่เป็นระเบียบ */
             animation: bounceSeedCustom 3s ease-in-out infinite;
             transform: translate(-50%, -50%) rotate(var(--rand-rot, 0deg)) scale(1);
         }
@@ -288,7 +286,6 @@
                 plantImg.src = 'bouquet.png'; 
                 
                 setTimeout(() => {
-                    // ใส่คลาสกระตุ้นให้ช่อดอกไม้ขยับเพื่อดึงดูดสายตาคนกด
                     plantImg.classList.add('attract-bounce');
                 }, 50);
 
@@ -301,7 +298,6 @@
                     plantImg.style.cursor = 'pointer';
                     plantImg.onclick = () => {
                         bgMusic.play().catch(e => console.log("Music play blocked"));
-                        // สั่งหยุดขยับทันทีเมื่อกดคลิกช่อดอกไม้สำเร็จ
                         plantImg.classList.remove('attract-bounce');
                         plantImg.style.transform = "scale(1.15)";
                         explode();
@@ -332,7 +328,6 @@
                 img.src = `photo${i+1}.jpg`;
                 img.className = 'memory-seed';
                 
-                // สุ่มองศาการเอียงให้รูปภาพตั้งแต่ -20 ถึง 20 องศา เพื่อให้กระจายแบบเป็นธรรมชาติ ไม่เป็นระเบียบเกินไป
                 const randRotation = (Math.random() * 40 - 20);
                 img.style.setProperty('--rand-rot', `${randRotation}deg`);
 
