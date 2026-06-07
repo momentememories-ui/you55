@@ -8,15 +8,24 @@
     <style>
         body {
             margin: 0; padding: 0;
-            /* แก้ไข: เปลี่ยนไฟล์พื้นหลังเป็น photo11.png และตั้งค่า contain ไม่ให้ภาพโดนซูม */
-            background: #fff0f5 url('photo11.png') no-repeat center center fixed;
-            background-size: contain;
+            background-color: #fff0f5; /* ใช้สีชมพูอ่อนเป็นพื้นหลังสำรอง */
             font-family: 'Prompt', sans-serif;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             height: 100vh; overflow: hidden;
             touch-action: manipulation;
             user-select: none;
             position: relative;
+        }
+
+        /* สร้างคลาสแยกสำหรับล็อกภาพพื้นหลังให้นิ่งสนิท ไม่ขยับตามแรงกดหรือการลากหน้าจอ */
+        .bg-fixed {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: url('photo11.png') no-repeat center center;
+            background-size: contain;
+            z-index: 0; /* อยู่หลังสุด */
+            pointer-events: none; /* ปล่อยให้การแตะทะลุผ่านไปหาปุ่มเกมได้ */
         }
 
         .butterfly {
@@ -160,6 +169,8 @@
     </style>
 </head>
 <body>
+
+    <div class="bg-fixed"></div>
 
     <audio id="bg-music" src="song.mp3" loop autoplay></audio>
 
