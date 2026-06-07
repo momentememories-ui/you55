@@ -8,7 +8,8 @@
     <style>
         body {
             margin: 0; padding: 0;
-            background-color: #fff0f5; /* ใช้สีชมพูอ่อนเป็นพื้นหลังสำรอง */
+            /* แก้ไข: เปลี่ยนสีพื้นหลังสำรองจากสีชมพูเป็นสีฟ้าพาสเทล */
+            background-color: #e0f7fa; 
             font-family: 'Prompt', sans-serif;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             height: 100vh; overflow: hidden;
@@ -17,15 +18,15 @@
             position: relative;
         }
 
-        /* สร้างคลาสแยกสำหรับล็อกภาพพื้นหลังให้นิ่งสนิท ไม่ขยับตามแรงกดหรือการลากหน้าจอ */
+        /* คลาสล็อกภาพพื้นหลังให้นิ่งสนิท ไม่ขยับตามแรงกด */
         .bg-fixed {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
             background: url('photo11.png') no-repeat center center;
             background-size: contain;
-            z-index: 0; /* อยู่หลังสุด */
-            pointer-events: none; /* ปล่อยให้การแตะทะลุผ่านไปหาปุ่มเกมได้ */
+            z-index: 0; 
+            pointer-events: none; 
         }
 
         .butterfly {
